@@ -33,7 +33,7 @@ class DashboardActivity : AppCompatActivity() {
             val view = layoutInflater.inflate(R.layout.dialog_dashboard, null)
             val toDoName = view.findViewById<EditText>(R.id.ev_todo)
             dialog.setView(view)
-            dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
+            dialog.setPositiveButton("追加") { _: DialogInterface, _: Int ->
                 if (toDoName.text.isNotEmpty()) {
                     val toDo = ToDo()
                     toDo.name = toDoName.text.toString()
@@ -59,7 +59,9 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     class DashboardAdapter(val context: Context, val list: MutableList<ToDo>) :
+
         RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
+
         override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
             return ViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_child_dashboard, p0, false))
         }
@@ -75,5 +77,6 @@ class DashboardActivity : AppCompatActivity() {
         class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
             val toDoName: TextView = v.findViewById(R.id.ev_todo_name)
         }
+
     }
 }

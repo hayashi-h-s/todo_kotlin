@@ -8,20 +8,17 @@ import com.haya.todokotolin.DTO.ToDo
 
 class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        val createToDoTable =
-            "CREATE TABLE" +
-                "$TABLE_TODO (" +
+        val createToDoTable = " CREATE TABLE $TABLE_TODO (" +
                 "$COL_ID integer PRIMARY KEY AUTOINCREMENT," +
                 "$COL_CREATED_AT datetime DEFAULT CURRENT_TIMESTAMP," +
                 "$COL_NAME varchar);"
         val createToDoItemTable =
-            "CREATE TABLE" +
-                "$TABLE_TODO_ITEM (" +
-                "$COL_ID integer PRIMARY KEY AUTOINCREMENT," +
-                "$COL_CREATED_AT datetime DEFAULT CURRENT_TIMESTAMP," +
-                "$COL_TODO_ID integer," +
-                "$COL_ITEM_NAME varchar," +
-                "$COL_IS_COLPLETED integer);"
+            "CREATE TABLE $TABLE_TODO_ITEM (" +
+                    "$COL_ID integer PRIMARY KEY AUTOINCREMENT," +
+                    "$COL_CREATED_AT datetime DEFAULT CURRENT_TIMESTAMP," +
+                    "$COL_TODO_ID integer," +
+                    "$COL_ITEM_NAME varchar," +
+                    "$COL_IS_COLPLETED integer);"
 
         db.execSQL(createToDoTable)
         db.execSQL(createToDoItemTable)
